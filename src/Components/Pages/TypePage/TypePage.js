@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class TypePage extends Component {
-onTypeClick = (type) => (event) =>{
-  console.log(type);
-  this.props.dispatch({type: "SET_ORDER_TYPE", payload: type})
-};
-    render() {
+  onTypeClick = (type) => (event) => {
+    console.log(type);
+    this.props.dispatch({ type: 'SET_ORDER_TYPE', payload: type });
+    this.props.history.push('/customer');
+  };
+  render() {
     return (
       <div>
         <h1> Type Page </h1>
