@@ -15,14 +15,20 @@ const typeReducer = (state = 'delivery', action) => {
 };
 
 //Object
-const customerReducer = () => {};
+const customerReducer = (state = {}, action) => {
+  if (action.type === 'SET_CUSTOMER_INFO') {
+    return action.payload;
+  }
+  return state
+};
 
 //array
 const pizzaReducer = () => {};
 
 const storeInstance = createStore(
   combineReducers({
-    typeReducer,
+    typeReducer, 
+    customerReducer,
   }),
   applyMiddleware(logger)
 );
