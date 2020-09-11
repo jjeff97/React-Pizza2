@@ -14,7 +14,7 @@ class CustomerPage extends Component {
   };
 
   render() {
-    console.log(this.props);
+    console.log(this.props.store.typeReducer);
     return (
       <div>
         <h1> Customer Page </h1>
