@@ -19,16 +19,21 @@ const customerReducer = (state = {}, action) => {
   if (action.type === 'SET_CUSTOMER_INFO') {
     return action.payload;
   }
-  return state
+  return state;
 };
 
 //array
-const pizzaReducer = () => {};
+const pizzaReducer = (state = [], action) => {
+  if (action.type === 'ADD_PIZZA') {
+    return [...state, action.payload];
+  }
+};
 
 const storeInstance = createStore(
   combineReducers({
-    typeReducer, 
+    typeReducer,
     customerReducer,
+    pizzaReducer,
   }),
   applyMiddleware(logger)
 );
