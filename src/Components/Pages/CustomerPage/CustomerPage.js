@@ -12,6 +12,10 @@ class CustomerPage extends Component {
       [input]: event.target.value,
     });
   };
+   onNextClick = (event) => {
+
+this.props.dispatch({ type: 'SET_CUSTOMER_INFO', payload: this.state});
+   }
 
   render() {
     console.log(this.props.store.typeReducer);
@@ -37,6 +41,8 @@ class CustomerPage extends Component {
             placeholder="Enter Address"
           />
         )}
+
+        <button onClick={this.onNextClick}>Next</button>
       </div>
     );
   }
