@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 
 class PizzaPage extends Component {
-  selectToppings = (topping) => (event) => {};
+
+  state = {
+    currentPizza: {
+      toppings: '',
+      size: ''
+
+    }
+  }
+  selectToppings = (topping) => (event) => {
+    this.setState({
+      currentPizza:
+    })
+  };
 
   selectSize = (size) => (event) => {};
 
