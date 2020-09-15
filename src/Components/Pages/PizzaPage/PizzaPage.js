@@ -35,6 +35,19 @@ class PizzaPage extends Component {
   addPizzaToOrder =  (event) =>{
     this.setState({
       order: [...this.state.order, this.state.currentPizza]
+    }, () => {
+this.clearCurrentPizza();
+console.log(this.state);
+    })
+
+    }
+  
+  clearCurrentPizza(){
+    this.setState({
+      currentPizza:{
+        toppings: '',
+        size: ''
+      }
     })
   }
 
@@ -55,7 +68,7 @@ class PizzaPage extends Component {
         </div>
 
         <div>
-          <button>Add to order!</button>
+          <button onClick={this.addPizzaToOrder}>Add to order!</button>
         </div>
 
         <ul>LIST OF PIZZAS</ul>
