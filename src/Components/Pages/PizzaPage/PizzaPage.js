@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 class PizzaPage extends Component {
 
   state = {
+    order: [],
     currentPizza: {
       toppings: '',
       size: ''
@@ -13,14 +14,29 @@ class PizzaPage extends Component {
     this.setState({
       currentPizza: {
         ...this.state.currentPizza,
-        toppings
+        toppings,
       }
     },() => {
       console.log(this.state);
     })
   };
 
-  selectSize = (size) => (event) => {};
+  selectSize = (size) => (event) => {
+    this.setState({
+      currentPizza: {
+        ...this.state.currentPizza,
+        size,
+      }
+    },() => {
+      console.log(this.state);
+    })
+  };
+
+  addPizzaToOrder =  (event) =>{
+    this.setState({
+      order: [...this.state.order, this.state.currentPizza]
+    })
+  }
 
   render() {
     return (
