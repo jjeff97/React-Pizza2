@@ -27,6 +27,7 @@ const pizzaReducer = (state = [], action) => {
   if (action.type === 'ADD_PIZZA') {
     return [...state, action.payload];
   }
+  return state;
 };
 
 const storeInstance = createStore(

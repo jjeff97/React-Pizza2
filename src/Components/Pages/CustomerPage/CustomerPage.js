@@ -15,7 +15,8 @@ class CustomerPage extends Component {
    onNextClick = (event) => {
 
 this.props.dispatch({ type: 'SET_CUSTOMER_INFO', payload: this.state});
-   }
+this.props.history.push('/pizza')
+   };
 
   render() {
     console.log(this.props.store.typeReducer);

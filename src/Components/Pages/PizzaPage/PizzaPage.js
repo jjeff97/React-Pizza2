@@ -9,9 +9,14 @@ class PizzaPage extends Component {
 
     }
   }
-  selectToppings = (topping) => (event) => {
+  selectToppings = (toppings) => (event) => {
     this.setState({
-      currentPizza:
+      currentPizza: {
+        ...this.state.currentPizza,
+        toppings
+      }
+    },() => {
+      console.log(this.state);
     })
   };
 
@@ -22,15 +27,15 @@ class PizzaPage extends Component {
       <div>
         <h1> Pizza Page </h1>
         <div>
-          <button onCLick={this.selectToppings('cheese')}>Cheese</button>
-          <button onCLick={this.selectToppings('sausage')}>Sausage</button>
-          <button onCLick={this.selectToppings('pepperoni')}>Pepperoni</button>
+          <button onClick={this.selectToppings('cheese')}>Cheese</button>
+          <button onClick={this.selectToppings('sausage')}>Sausage</button>
+          <button onClick={this.selectToppings('pepperoni')}>Pepperoni</button>
         </div>
 
         <div>
-          <button onCLick={this.selectSize('small')}>Small</button>
-          <button onCLick={this.selectSize('medium')}>Medium</button>
-          <button onCLick={this.selectSize('large')}>Large</button>
+          <button onClick={this.selectSize('small')}>Small</button>
+          <button onClick={this.selectSize('medium')}>Medium</button>
+          <button onClick={this.selectSize('large')}>Large</button>
         </div>
 
         <div>
