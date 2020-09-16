@@ -1,57 +1,74 @@
 import React, { Component } from 'react';
 
 class PizzaPage extends Component {
-
   state = {
     order: [],
     currentPizza: {
       toppings: '',
-      size: ''
-
-    }
-  }
+      size: '',
+    },
+  };
   selectToppings = (toppings) => (event) => {
-    this.setState({
-      currentPizza: {
-        ...this.state.currentPizza,
-        toppings,
+    this.setState(
+      {
+        currentPizza: {
+          ...this.state.currentPizza,
+          toppings,
+        },
+      },
+      () => {
+        console.log(this.state);
       }
-    },() => {
-      console.log(this.state);
-    })
+    );
   };
 
   selectSize = (size) => (event) => {
-    this.setState({
-      currentPizza: {
-        ...this.state.currentPizza,
-        size,
+    this.setState(
+      {
+        currentPizza: {
+          ...this.state.currentPizza,
+          size,
+        },
+      },
+      () => {
+        console.log(this.state);
       }
-    },() => {
-      console.log(this.state);
-    })
+    );
   };
 
-  addPizzaToOrder =  (event) =>{
-    this.setState({
-      order: [...this.state.order, this.state.currentPizza]
-    }, () => {
-this.clearCurrentPizza();
-console.log(this.state);
-    })
-
-    }
-  
-  clearCurrentPizza(){
-    this.setState({
-      currentPizza:{
-        toppings: '',
-        size: ''
+  addPizzaToOrder = (event) => {
+    this.setState(
+      {
+        order: [...this.state.order, this.state.currentPizza],
+      },
+      () => {
+        this.clearCurrentPizza();
       }
-    })
+    );
+  };
+
+  clearCurrentPizza() {
+    this.setState(
+      {
+        currentPizza: {
+          toppings: '',
+          size: '',
+        },
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   }
 
   render() {
+    const pizzaArray = this.state.order.map((pizza, index) => {
+      return (
+        <li>
+          {pizza.size} - {pizza.toppings}
+        </li>
+      );
+    });
     return (
       <div>
         <h1> Pizza Page </h1>
@@ -70,8 +87,8 @@ console.log(this.state);
         <div>
           <button onClick={this.addPizzaToOrder}>Add to order!</button>
         </div>
-
-        <ul>LIST OF PIZZAS</ul>
+        <h3>Order:</h3>
+        <ul>{pizzaArray}</ul>
 
         <div>
           <button>Next</button>
