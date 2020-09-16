@@ -7,9 +7,11 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 //string
-const typeReducer = (state = 'delivery', action) => {
+const typeReducer = (state = '', action) => {
   if (action.type === 'SET_ORDER_TYPE') {
     return action.payload;
+  } else if(action.type === 'CLEAR_ORDER_TYPE'){
+    return '';
   }
   return state;
 };
@@ -18,6 +20,8 @@ const typeReducer = (state = 'delivery', action) => {
 const customerReducer = (state = {}, action) => {
   if (action.type === 'SET_CUSTOMER_INFO') {
     return action.payload;
+  } else if(action.type === 'CLEAR_CUSTOMER_INFO'){
+    return {};
   }
   return state;
 };
@@ -26,6 +30,8 @@ const customerReducer = (state = {}, action) => {
 const pizzaReducer = (state = [], action) => {
   if (action.type === 'SET_PIZZA_ORDER') {
     return  action.payload;
+  } else if(action.type === 'CLEAR_PIZZA_ORDER'){
+    return [];
   }
   return state;
 };
@@ -44,15 +50,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-//what does the pizza need?
-//size STRING
-//topping STRING
-/*
-[
-  {
-size: STRING
-topping: STRING
-}
-]
-*/
