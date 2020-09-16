@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class PizzaPage extends Component {
   state = {
@@ -61,10 +62,16 @@ class PizzaPage extends Component {
     );
   }
 
+  clickNext = (event) => {
+    //dispatch
+this.props.dispatch({type:'SET_PIZZA_ORDER' , payload:this.state.order})
+//next page
+  }
+
   render() {
     const pizzaArray = this.state.order.map((pizza, index) => {
       return (
-        <li>
+        <li key={index}>
           {pizza.size} - {pizza.toppings}
         </li>
       );
@@ -91,11 +98,11 @@ class PizzaPage extends Component {
         <ul>{pizzaArray}</ul>
 
         <div>
-          <button>Next</button>
+          <button>onCLickNext</button>
         </div>
       </div>
     );
   }
 }
 
-export default PizzaPage;
+export default connect ()(PizzaPage);
