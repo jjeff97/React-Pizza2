@@ -66,6 +66,7 @@ class PizzaPage extends Component {
     //dispatch
 this.props.dispatch({type:'SET_PIZZA_ORDER' , payload:this.state.order})
 //next page
+this.props.history.push('/summary')
   }
 
   render() {
@@ -98,7 +99,7 @@ this.props.dispatch({type:'SET_PIZZA_ORDER' , payload:this.state.order})
         <ul>{pizzaArray}</ul>
 
         <div>
-          <button>onCLickNext</button>
+    <button onClick={this.clickNext}>Next</button>
         </div>
       </div>
     );
